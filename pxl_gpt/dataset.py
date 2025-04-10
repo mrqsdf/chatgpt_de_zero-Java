@@ -2,13 +2,14 @@ from .dataset_loader import DatasetLoader
 
 
 class Dataset:
-    def __init__(self, dataset_ref="breandan/french-reddit-discussion", download_dir="data"):
+    def __init__(self, dataset_ref="breandan/french-reddit-discussion", download_dir="data", max_length=10000):
         """
         Initialize the Dataset class.
         :param dataset_ref: Reference to the dataset.
         :param download_dir: Directory to download the dataset.
         """
         self.raw_data = DatasetLoader(dataset_ref, download_dir).load()
+        self.max_length = max_length
         self.data = None
 
     def preprocess(self):
@@ -26,4 +27,4 @@ class Dataset:
         # Remove any rows that are too short
         text_only = text_only[text_only.str.len() > 5]
 
-        self.data = text_only.to_list()[:1000]
+        self.data = text_only.to_list()[: self.max_length]
