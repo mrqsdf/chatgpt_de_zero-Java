@@ -15,14 +15,14 @@ class BPETokenizer:
     def train(self, dataset: Dataset):
         """Train the BPE tokenizer on the dataset."""
         # Step 1: Create initial vocabulary with special tokens
-        vocab = {"<UNK>": 0, "<PAD>": 1}
+        vocab = {"<UNK>": 0, "<PAD>": 1, "<SPACE>": 2}
         idx = len(vocab)
 
         # Step 2: Tokenize text properly, keeping punctuation as separate tokens
         all_tokens = []
         for text in dataset.data:
             # This regex splits on word boundaries but keeps punctuation as separate tokens
-            tokens = re.findall(r"\w+|[^\w\s]", text)
+            tokens = re.findall(r"\w+|[^\w\s]|\s", text)  # Include space as a token
             all_tokens.extend(tokens)
 
         # Count token frequencies
@@ -32,7 +32,10 @@ class BPETokenizer:
         token_splits = {}
         for token, count in token_counts.items():
             if count >= self.min_frequency:
-                token_splits[token] = list(token)
+                if token == " ":
+                    token_splits["<SPACE>"] = ["<SPACE>"]  # Treat space as a special token
+                else:
+                    token_splits[token] = list(token)
                 # Add each character to vocab if not already there
                 for char in token:
                     if char not in vocab:
@@ -90,11 +93,15 @@ class BPETokenizer:
     def encode(self, text):
         """Encode text using BPE."""
         # Tokenize the text properly
-        tokens = re.findall(r"\w+|[^\w\s]", text)
+        tokens = re.findall(r"\w+|[^\w\s]|\s", text)  # Include space as a token
         token_ids = []
 
         for token in tokens:
             # Apply merges in sequence
+            if token == " ":
+                token_ids.append(self.vocab.get("<SPACE>", self.vocab["<UNK>"]))  # Use the space token
+                continue
+
             symbols = list(token)
 
             # Apply merges until no more can be applied
@@ -129,7 +136,7 @@ class BPETokenizer:
 
         # Join tokens - this is simplistic and might need refinement
         # for proper handling of whitespace around punctuation
-        text = "".join(tokens)
+        text = "".join(tokens).replace("<SPACE>", " ")
         return text
 
     def save(self, path):
