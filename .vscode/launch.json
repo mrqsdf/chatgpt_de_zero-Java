@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: pxl_gpt.main",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pxl_gpt.main",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LOGURU_LEVEL": "INFO"
+            }
+        }
+    ]
+}
