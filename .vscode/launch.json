@@ -2,12 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: pxl_gpt.main",
+            "name": "Train tokenizer",
             "type": "debugpy",
             "request": "launch",
-            "module": "pxl_gpt.main",
+            "program": "${workspaceFolder}/scripts/train_tokenizer.py",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}",
             "env": {
                 "LOGURU_LEVEL": "INFO"
             }

@@ -1,7 +1,7 @@
 from loguru import logger
 
-from .dataset import Dataset
-from .tokenizer import BPETokenizer
+from pxl_gpt.dataset import Dataset
+from pxl_gpt.tokenizer import BPETokenizer
 
 
 def main():
@@ -26,7 +26,11 @@ def main():
     decoded_text = tokenizer.decode(encoded_text)
     logger.info(f"Decoded text: {decoded_text}")
 
+    # STEP 5: Save the tokenizer
+    logger.info("Saving tokenizer...")
+    tokenizer.save("data/tokenizer.json")
+    logger.info("Tokenizer saved successfully.")
+
 
 if __name__ == "__main__":
     main()
-    logger.info("Finished processing.")
