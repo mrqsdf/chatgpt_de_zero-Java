@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,10 +13,9 @@ import com.google.gson.reflect.TypeToken;
 import fr.mrqsdf.gptlike.resources.Pair;
 
 public class BPETokenizer {
-    private static final Logger logger = Logger.getLogger(BPETokenizer.class.getName());
 
-    private int vocabSize;
-    private int minFrequency;
+    private final int vocabSize;
+    private final int minFrequency;
     private Map<String, Integer> vocab;
     private Map<Pair, String> merges;
 
@@ -68,12 +66,11 @@ public class BPETokenizer {
             String token = entry.getKey();
             int count = entry.getValue();
             if (count >= minFrequency) {
+                List<String> symbols = new ArrayList<>();
                 if (token.equals(" ")) {
-                    List<String> symbols = new ArrayList<>();
                     symbols.add("<SPACE>");
                     tokenSplits.put("<SPACE>", symbols);
                 } else {
-                    List<String> symbols = new ArrayList<>();
                     for (char c : token.toCharArray()) {
                         symbols.add(String.valueOf(c));
                     }
@@ -123,6 +120,9 @@ public class BPETokenizer {
             }
 
             // Création du nouveau symbole en fusionnant la paire
+            if (bestPair == null) {
+                break;
+            }
             String newSymbol = bestPair.first + bestPair.second;
             vocab.put(newSymbol, idx++);
             merges.put(bestPair, newSymbol);

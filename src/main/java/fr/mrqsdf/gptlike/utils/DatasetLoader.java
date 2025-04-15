@@ -13,7 +13,7 @@ public class DatasetLoader {
     private static final Logger logger = Logger.getLogger(DatasetLoader.class.getName());
 
     // Chemin par défaut vers le fichier JSON
-    private String datasetFilePath;
+    private final String datasetFilePath;
 
     /**
      * Constructeur sans argument qui initialise le chemin par défaut : assets/dataset/dataset.json

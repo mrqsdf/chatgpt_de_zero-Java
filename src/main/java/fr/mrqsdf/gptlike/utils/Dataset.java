@@ -10,11 +10,11 @@ public class Dataset {
     private static final Logger logger = Logger.getLogger(Dataset.class.getName());
 
     // Les données brutes sous la forme d'une liste de Map (chaque map représente une ligne du dataset)
-    private List<Map<String, String>> rawData;
+    private final List<Map<String, String>> rawData;
     // Le résultat du prétraitement sera stocké dans cette liste
     private List<String> data;
     // Nombre maximum d'éléments à conserver après prétraitement
-    private int maxLength;
+    private final int maxLength;
 
     /**
      * Constructeur par défaut qui charge le dataset depuis le chemin par défaut
@@ -58,7 +58,7 @@ public class Dataset {
             String text = entry.get("utt");
             if (text != null) {
                 text = text.trim();
-                if (!text.isEmpty() && text.length() > 5) {
+                if (text.length() > 5) {
                     processedData.add(text);
                 }
             }
