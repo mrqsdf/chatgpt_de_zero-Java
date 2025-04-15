@@ -1,4 +1,4 @@
-package fr.mrqsdf.utils;
+package fr.mrqsdf.gptlike.utils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import fr.mrqsdf.resources.Pair;
+import fr.mrqsdf.gptlike.resources.Pair;
 
 public class BPETokenizer {
     private static final Logger logger = Logger.getLogger(BPETokenizer.class.getName());

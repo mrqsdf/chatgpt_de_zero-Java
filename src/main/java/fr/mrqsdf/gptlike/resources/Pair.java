@@ -1,6 +1,4 @@
-package fr.mrqsdf.resources;
-
-import fr.mrqsdf.utils.BPETokenizer;
+package fr.mrqsdf.gptlike.resources;
 
 import java.util.Objects;
 

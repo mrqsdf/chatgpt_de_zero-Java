@@ -1,7 +1,7 @@
-package fr.mrqsdf;
+package fr.mrqsdf.gptlike;
 
-import fr.mrqsdf.utils.BPETokenizer;
-import fr.mrqsdf.utils.Dataset;
+import fr.mrqsdf.gptlike.utils.BPETokenizer;
+import fr.mrqsdf.gptlike.utils.Dataset;
 
 import java.io.IOException;
 import java.util.List;

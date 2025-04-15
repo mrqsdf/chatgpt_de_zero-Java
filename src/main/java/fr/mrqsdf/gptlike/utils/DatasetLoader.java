@@ -1,4 +1,4 @@
-package fr.mrqsdf.utils;
+package fr.mrqsdf.gptlike.utils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
