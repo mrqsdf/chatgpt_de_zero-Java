@@ -98,6 +98,10 @@ A custom implementation of Byte Pair Encoding (BPE) tokenization, similar to wha
 
 The GPT model architecture implementation.
 
+## Translated Code 
+
+- [Code en Java by MrQsdf](https://github.com/mrqsdf/chatgpt_de_zero-Java/tree/main) - Code translated to java
+
 ## 📚 References
 
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - The original Transformer paper
