@@ -15,17 +15,18 @@ A custom implementation of a GPT model built from scratch. This project demonstr
 chatgpt_from_scratch/
 ├── assets/
 │   ├── data/
-│       └── tokenizer.json  # Trained tokenizer
+│   │   └── tokenizer.json  # Trained tokenizer
 │   └── dataset/
 │       └── dataset.json    # Preprocessed dataset
 │    
 ├── fr/mrqsdf/gptlike/
 │   ├── resource/
-│       └── Pair.java       # Pair Class
+│   │   └── Pair.java       # Pair Class
 │   ├── utils/
-│       ├── Dataset.java    # dataset Class
-│       ├── BPETokenizer    # BPE tokenizer implementation
-│       └── DatasetLoader   # Dataset loading utilities
+│   │   ├── ColoredLogger   # Custom Logger with color
+│   │   ├── Dataset.java    # dataset Class
+│   │   ├── BPETokenizer    # BPE tokenizer implementation
+│   │   └── DatasetLoader   # Dataset loading utilities
 │   └── Main.java           # Main Class for Train Tokenisation.
 ```
 
