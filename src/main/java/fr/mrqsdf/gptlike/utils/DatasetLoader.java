@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import com.google.gson.Gson;
+import fr.mrqsdf.gptlike.Main;
 
 public class DatasetLoader {
-    private static final Logger logger = Logger.getLogger(DatasetLoader.class.getName());
+    private static final Logger logger = Main.logger;
 
     // Chemin par défaut vers le fichier JSON
     private final String datasetFilePath;
