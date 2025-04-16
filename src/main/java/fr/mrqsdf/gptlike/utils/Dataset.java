@@ -1,5 +1,7 @@
 package fr.mrqsdf.gptlike.utils;
 
+import fr.mrqsdf.gptlike.Main;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 public class Dataset {
-    private static final Logger logger = Logger.getLogger(Dataset.class.getName());
+    private static final Logger logger = Main.logger;
 
     // Les données brutes sous la forme d'une liste de Map (chaque map représente une ligne du dataset)
     private final List<Map<String, String>> rawData;
